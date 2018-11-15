@@ -1,0 +1,6 @@
+Title: Bank Account Final
+Description: This code is a database which holds records for bank account records. It is not a simulation of what you would see at an ATM machine but it would be a simulation of a bank administrator. You have the capability of entering records such as Checking or Saving. You also have the capability of deleting, archiving, and reloading records which 1.0 did not have. You have the option(s) to withdrawal X amount, or deposit X amount in the specified bank account. There are a lot of features I added that were really not necessary but the purpose is to "teach" new features to people (students) who wish to learn certain features of C++. The main point of this program is to allow the user to grasp some advanced concepts of C++. This will be the final version of the Bank Account. I have made a few optimizations and tweaked the program. Enjoy!
+This file came from Planet-Source-Code.com...the home millions of lines of source code
+You can view comments on this code/and or vote on it at: http://www.Planet-Source-Code.com/vb/scripts/ShowCode.asp?txtCodeId=8757&lngWId=3
+
+The author may have retained certain copyrights to this code...please observe their request and the law by reviewing all copyright conditions at the above URL.

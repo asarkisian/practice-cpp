@@ -1,0 +1,55 @@
+Functions called:
+ delete (38 times)
+ strlen (132 times)
+ SysReallocMem (37 times)
+ SysFreeMem (6051 times)
+ SysGetMem (6052 times)
+ lstrlenA (1 times)
+ lstrcpynA (4 times)
+ realloc (1 times)
+ memcpy (1 times)
+ delete[] (2 times)
+ free (26 times)
+ new[] (14 times)
+ new (43 times)
+ calloc (5 times)
+ malloc (20 times)
+Resource types used:
+ object array (14 allocs, 13 max)
+ object (43 allocs, 29 max)
+ memory block (6078 allocs, 517 max)
+Modules used:
+ 00400000 08/08/2006 17:59:24 C:\Documents and Settings\Armond\Desktop\Win
+ Encryption Utility\Version 2\CryptionIUtility2.exe
+ 01190000 02/01/2002 09:00:00 C:\Documents and Settings\Armond\Desktop\Win
+ Encryption Utility\Version 2\BORLNDMM.DLL
+ 0CD00000 02/01/2002 09:00:00 C:\PROGRA~1\Borland\CBUILD~1\Bin\CG32.DLL
+ 16000000 03/15/2005 00:00:00 C:\Program Files\Trillian\events.dll
+ 32600000 02/01/2002 09:00:00 C:\Documents and Settings\Armond\Desktop\Win
+ Encryption Utility\Version 2\CC3260MT.DLL
+ 5AD70000 08/04/2004 06:00:00 C:\WINDOWS\system32\UXTHEME.DLL
+ 5D090000 08/04/2004 06:00:00 C:\WINDOWS\system32\COMCTL32.DLL
+ 66000000 05/12/2005 14:19:44 C:\Program Files\Stardock\Object
+ Desktop\ThemeManager\WBlind.dll
+ 66600000 02/26/2003 22:24:32 C:\Program Files\Stardock\Object
+ Desktop\ThemeManager\wbhelp.dll
+ 76380000 08/04/2004 06:00:00 C:\WINDOWS\system32\msimg32.dll
+ 763B0000 08/04/2004 06:00:00 C:\WINDOWS\system32\comdlg32.dll
+ 76B40000 08/04/2004 06:00:00 C:\WINDOWS\system32\WINMM.dll
+ 77120000 08/04/2004 06:00:00 C:\WINDOWS\system32\OLEAUT32.DLL
+ 773D0000 08/04/2004 06:00:00
+ C:\WINDOWS\WinSxS\x86_Microsoft.Windows.Common-Controls_6595b64144ccf1df_6.0.
+2600.2180_x-ww_a84f1ff9\comctl32.dll
+ 774E0000 07/25/2005 23:39:48 C:\WINDOWS\system32\ole32.dll
+ 77C00000 08/04/2004 06:00:00 C:\WINDOWS\system32\VERSION.DLL
+ 77C10000 08/04/2004 06:00:00 C:\WINDOWS\system32\msvcrt.dll
+ 77D40000 03/02/2005 13:09:30 C:\WINDOWS\system32\user32.dll
+ 77DD0000 08/04/2004 06:00:00 C:\WINDOWS\system32\advapi32.dll
+ 77E70000 08/04/2004 06:00:00 C:\WINDOWS\system32\RPCRT4.dll
+ 77F10000 12/28/2005 21:54:36 C:\WINDOWS\system32\GDI32.dll
+ 77F60000 05/10/2006 00:23:02 C:\WINDOWS\system32\SHLWAPI.dll
+ 7C340000 03/15/2005 00:00:00 C:\Program Files\Trillian\MSVCR71.dll
+ 7C800000 08/04/2004 06:00:00 C:\WINDOWS\system32\kernel32.dll
+ 7C900000 08/04/2004 06:00:00 C:\WINDOWS\system32\ntdll.dll
+ 7C9C0000 03/16/2006 23:03:54 C:\WINDOWS\system32\SHELL32.DLL
+==========================================

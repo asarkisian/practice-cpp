@@ -1,0 +1,448 @@
+//---------------------------------------------------------------------------
+
+#include <vcl.h>
+#pragma hdrstop
+
+#include "Main.h"
+#include "About.h"
+#include "GameConstants.h"
+#include "HallOfFame.h"
+#include "HallOfFameInterface.h"
+#include "PauseGameScreen.h"
+
+//---------------------------------------------------------------------------
+#pragma package(smart_init)
+#pragma resource "*.dfm"
+TfrmMain* frmMain;
+
+//Randomize the rand() method
+randomize();
+
+//---------------------------------------------------------------------------
+__fastcall TfrmMain::TfrmMain(TComponent* Owner)
+	: controlKey_up(0), controlKey_down(0), controlKey_left(0),
+		controlKey_right(0), TForm(Owner){
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TfrmMain::FormKeyDown(TObject *Sender, WORD &Key, TShiftState Shift){
+
+  //Turn the music On/Off
+	if(Key == VK_F4){
+		if(mnucmdSound->Checked == true){
+			mnucmdSound->Checked = false;
+			soundEnabled = false;
+		}
+		else if(mnucmdSound->Checked == false){
+			mnucmdSound->Checked = true;
+			soundEnabled = true;
+		}
+  }
+
+	//If User presses F5 then the game will pause
+	if(Key == VK_F5){
+
+	 //Setting up where the pause window will be located on the screen
+	 frmGamePause->Top = (frmMain->Top + 170);
+	 frmGamePause->Left = (frmMain->Left);
+
+	 //Opens the pause window in modal mode which means until the user presses OK, no
+	 //other action will occur
+	 frmGamePause->Left = frmMain->Left;frmGamePause->ShowModal();
+	}
+
+	//If User presses Escape then the game will end
+	if(Key == VK_ESCAPE){
+
+		//Initiates an end game sequence and that the game is NOT running
+		gameEnd();
+	}
+	else {
+
+		//Indicates that the game IS running
+//		gExit = false;
+	}
+
+	//If User presses F1 then the game will start
+	if(Key == VK_F1){
+
+    //If game is already in session, user cant start a new game until they end the game
+		if(gExit == false) return;
+
+		//Initializing a resart game value
+		playerNewGame = false;
+		playerWinGame = false;
+		playerLoseGame = false;
+		playerRestartGame = true;
+		playerEndGame = false;
+
+		//Everytime the player presses <F1>. The game begins from Level 1
+		playersLevel = DEFAULT_PLAYERS_LEVEL;
+		currentLevel = DEFAULT_CURRENT_LEVEL;
+		playersCredits = DEFAULT_PLAYERS_CREDITS;
+		playersMisses= DEFAULT_PLAYERS_MISSES;
+		playersScore = DEFAULT_PLAYERS_SCORE;
+
+
+	 //Indicates that the game is running and not in off-line mode
+	 gExit = false;
+
+	 //Initialize and starts the game from Level1 (first time)
+	 gameStart();
+	}
+
+		//Speed of the paddle whether going right or left
+		if(Key == VK_LEFT){
+			myPaddle->Left-=(PADDLE_SPEED + usr_paddlespeed);
+			myPaddle2->Left-=(PADDLE_SPEED + usr_paddlespeed);
+			myPaddle3->Left-=(PADDLE_SPEED + usr_paddlespeed);
+			myPaddle4->Left-=(PADDLE_SPEED + usr_paddlespeed);
+			myPaddle5->Left-=(PADDLE_SPEED + usr_paddlespeed);
+		}
+		else if(Key == VK_RIGHT){
+			myPaddle->Left+=(PADDLE_SPEED + usr_paddlespeed);
+			myPaddle2->Left+=(PADDLE_SPEED + usr_paddlespeed);
+			myPaddle3->Left+=(PADDLE_SPEED + usr_paddlespeed);
+			myPaddle4->Left+=(PADDLE_SPEED + usr_paddlespeed);
+			myPaddle5->Left+=(PADDLE_SPEED + usr_paddlespeed);
+		}
+
+		//Checking to see if the paddle hit the left side window
+		if(myPaddle->Left <= 0){
+			myPaddle->Left = + 2;
+			myPaddle4->Left = myPaddle->Width + 1;
+			myPaddle3->Left = myPaddle->Width + myPaddle4->Width + 0;
+			myPaddle5->Left = myPaddle->Width + myPaddle4->Width + myPaddle3->Width - 1;
+			myPaddle2->Left = myPaddle->Width + myPaddle4->Width + myPaddle3->Width + myPaddle5->Width - 2;
+		}
+		//Checking to see if the paddle hit the right side window
+		else if(myPaddle2->Left + myPaddle2->Width >= frmMain->Width){
+			myPaddle2->Left = frmMain->Width - myPaddle2->Width - 5;
+			myPaddle5->Left = frmMain->Width - myPaddle5->Width - myPaddle2->Width - 4;
+			myPaddle3->Left = myPaddle2->Left - myPaddle3->Width - myPaddle5->Width + 2;
+			myPaddle4->Left = myPaddle2->Left - myPaddle3->Width - myPaddle5->Width - myPaddle4->Width + 3;
+			myPaddle->Left = myPaddle2->Left - myPaddle3->Width - myPaddle5->Width - myPaddle4->Width - myPaddle->Width + 4;
+	}
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TfrmMain::FormCreate(TObject *Sender){
+
+	//Bonus Level Text Turned Off When Game Begins at Level 1
+	bonusLevel1->Visible = false;
+	bonusLevel2->Visible = false;
+	bonusLevel1->AutoSize = true;
+	bonusLevel2->AutoSize = true;
+	bonusLevel1->Font->Color = BONUS_LEVEL_TEXT_COLOR;
+	bonusLevel2->Font->Color = BONUS_LEVEL_TEXT_COLOR;
+
+	//Turns the Sound FX on
+	soundEnabled = true;
+
+	//Make the hall of fame menu hidden until the game begins (this is because the hall of fame loads after pressing f1)
+	HallOfFame1->Visible = false;
+
+	//Indicates a brand new game is in session or will be in session soon
+	playerNewGame = true;  // <--- Initiating a new game sequence
+	playerWinGame = false;
+	playerLoseGame = false;
+	playerRestartGame = false;
+	playerEndGame = false;
+
+	//Paddle Color DEFAULT is White
+	frmMain->myPaddle->Brush->Color = PADDLE_DEFAULT_COLOR;
+	frmMain->myPaddle2->Brush->Color = PADDLE_DEFAULT_COLOR;
+	frmMain->myPaddle3->Brush->Color = PADDLE_DEFAULT_COLOR;
+	frmMain->myPaddle4->Brush->Color = PADDLE_DEFAULT_COLOR;
+	frmMain->myPaddle5->Brush->Color = PADDLE_DEFAULT_COLOR;
+
+	//Ball Color DEFAULT is White
+	frmMain->myBall->Brush->Color = BALL_DEFAULT_COLOR;
+
+	//Dynamically allocating the wallpaper theme for the level
+	myBackground = new TImage(this);
+	myBackground->Parent = frmMain;
+	myBackground->SendToBack();
+	myBackground->Height = (frmMain->Height - blackFloor->Height);
+	myBackground->Width = frmMain->Width;
+
+	levelThemes();		//Determines which theme is appropriate for the current level
+
+ //Checks to see if it is a new game or not
+ if(playerNewGame == true && playerWinGame == false && playerLoseGame == false
+ && playerRestartGame == false && playerEndGame == false){
+
+	//Dynamically creating third object <shape3> which are the bricks
+	 for (short int i=0, x=10, y=20; i < 25; i++, x+=110){
+
+		//Dynamically create an object shape3 during runtime.
+		 Shape3[i]= new TImage(this);
+		 Shape3[i]->Parent = frmMain;
+		 Shape3[i]->Picture->LoadFromFile(BRICK_PICTURE);
+		 Shape3[i]->Height = BRICK_HEIGHT;
+		 Shape3[i]->Width = BRICK_WIDTH;
+		 Shape3[i]->Top = y;
+		 Shape3[i]->Left = x;
+		 Shape3[i]->Visible = false;
+
+		 if(i == 4 || i == 9 || i == 14 || i == 19){
+
+				//Resets and returns the bricks back to the beginning which is LEFT = 10
+				x = -100;
+
+				//Resets and returns the bricks below the bricks that were already generated
+				y += 17;
+		 }
+	 }
+ }
+
+	//Initializing frmMain
+	frmMain->Width = MAIN_WIDTH;
+	frmMain->Height = MAIN_HEIGHT;
+	frmMain->Left = MAIN_LEFT;
+	frmMain->Top = MAIN_TOP;
+	frmMain->Visible = true;
+	frmMain->AutoScroll = false;
+
+	//Initiating ballSpeed options
+	mnuBallSlowest->Checked = false;
+	mnuBallSlow->Checked = false;
+	mnuBallMod->Checked = true;
+	mnuBallFast->Checked = false;
+	mnuBallFastest->Checked = false;
+
+	//Initiating the default speed to be moderate
+	usr_ballspeed = USR_BALL_MOD;
+
+	//Initializing paddleSpeed options
+	mnuPaddleSlowest->Checked = false;
+	mnuPaddleSlow->Checked = false;
+	mnuPaddleMod->Checked = true;
+	mnuPaddleFast->Checked = false;
+	mnuPaddleFastest->Checked = false;
+
+	//Initiating the default speed to be moderate
+	usr_paddlespeed = PADDLE_BALL_MOD;
+
+	//Make sure the game doesn't start when the application starts. Game sequence stop
+	gameEnd();
+
+  //Indicates that the game IS NOT running and exit = true;
+	gExit = true;
+}
+//---------------------------------------------------------------------------
+void __fastcall TfrmMain::FormClose(TObject *Sender, TCloseAction &Action){
+
+	//Stop the Game
+	gameEnd();
+
+	//Stop the Application
+	Application->Terminate();
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TfrmMain::StartGame1Click(TObject *Sender){
+
+	playerNewGame = false;
+	playerWinGame = false;
+	playerLoseGame = false;
+	playerRestartGame = true;
+	playerEndGame = false;
+
+		//Everytime the player presses <F1>. The game begins from Level 1
+		playersLevel = DEFAULT_PLAYERS_LEVEL;
+		currentLevel = DEFAULT_CURRENT_LEVEL;
+		playersCredits = DEFAULT_PLAYERS_CREDITS;
+		playersMisses= DEFAULT_PLAYERS_MISSES;
+		playersScore = DEFAULT_PLAYERS_SCORE;
+
+	 //Indicates that the game IS RUNNING and not in off-line mode
+	 gExit = false;
+	 
+	 //Initialize and starts the game from Level1 (first time)
+	 gameStart();
+}
+//---------------------------------------------------------------------------
+
+
+void __fastcall TfrmMain::ExitAltF41Click(TObject *Sender){
+
+	//Stop the Game
+	gameEnd();
+
+	//Stop the Application
+	Application->Terminate();
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TfrmMain::EndGame1Click(TObject *Sender){
+
+	//Stop the Game
+	gameEnd();
+}
+//---------------------------------------------------------------------------
+
+
+void __fastcall TfrmMain::mnuBallModClick(TObject *Sender){
+
+	mnuBallSlowest->Checked = false;
+	mnuBallSlow->Checked = false;
+	mnuBallMod->Checked = true;
+	mnuBallFast->Checked = false;
+	mnuBallFastest->Checked = false;
+
+	usr_ballspeed = USR_BALL_MOD;
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TfrmMain::mnuBallSlowClick(TObject *Sender){
+
+	mnuBallSlowest->Checked = false;
+	mnuBallSlow->Checked = true;
+	mnuBallMod->Checked = false;
+	mnuBallFast->Checked = false;
+	mnuBallFastest->Checked = false;
+
+	usr_ballspeed = USR_BALL_SLOW;
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TfrmMain::mnuBallFastClick(TObject *Sender){
+
+	mnuBallSlowest->Checked = false;
+	mnuBallSlow->Checked = false;
+	mnuBallMod->Checked = false;
+	mnuBallFast->Checked = true;
+	mnuBallFastest->Checked = false;
+
+	usr_ballspeed = USR_BALL_FAST;
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TfrmMain::mnuPaddleFastClick(TObject *Sender){
+
+	mnuPaddleSlowest->Checked = false;
+	mnuPaddleSlow->Checked = false;
+	mnuPaddleMod->Checked = false;
+	mnuPaddleFast->Checked = true;
+	mnuPaddleFastest->Checked = false;
+
+	usr_paddlespeed = PADDLE_BALL_FAST;
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TfrmMain::mnuPaddleModClick(TObject *Sender){
+
+	mnuPaddleSlowest->Checked = false;
+	mnuPaddleSlow->Checked = false;
+	mnuPaddleMod->Checked = true;
+	mnuPaddleFast->Checked = false;
+	mnuPaddleFastest->Checked = false;
+
+	usr_paddlespeed = PADDLE_BALL_MOD;
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TfrmMain::mnuPaddleSlowClick(TObject *Sender){
+
+	mnuPaddleSlowest->Checked = false;
+	mnuPaddleSlow->Checked = true;
+	mnuPaddleMod->Checked = false;
+	mnuPaddleFast->Checked = false;
+	mnuPaddleFastest->Checked = false;
+
+	usr_paddlespeed = PADDLE_BALL_SLOW;
+}
+//---------------------------------------------------------------------------
+
+
+void __fastcall TfrmMain::mnuPaddleFastestClick(TObject *Sender){
+
+	mnuPaddleSlowest->Checked = false;
+	mnuPaddleSlow->Checked = false;
+	mnuPaddleMod->Checked = false;
+	mnuPaddleFast->Checked = false;
+	mnuPaddleFastest->Checked = true;
+
+	usr_paddlespeed = PADDLE_BALL_FASTEST;
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TfrmMain::mnuBallFastestClick(TObject *Sender){
+
+	mnuPaddleSlowest->Checked = false;
+	mnuBallSlow->Checked = false;
+	mnuBallMod->Checked = false;
+	mnuBallFast->Checked = false;
+	mnuBallFastest->Checked = true;
+
+	usr_ballspeed = USR_BALL_FASTEST;
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TfrmMain::mnuBallSlowestClick(TObject *Sender){
+
+	mnuBallSlowest->Checked = true;
+	mnuBallSlow->Checked = false;
+	mnuBallMod->Checked = false;
+	mnuBallFast->Checked = false;
+	mnuBallFastest->Checked = false;
+
+	usr_ballspeed = USR_BALL_SLOWEST;
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TfrmMain::mnuPaddleSlowestClick(TObject *Sender){
+
+	mnuPaddleSlowest->Checked = true;
+	mnuPaddleSlow->Checked = false;
+	mnuPaddleMod->Checked = false;
+	mnuPaddleFast->Checked = false;
+	mnuPaddleFastest->Checked = false;
+
+	usr_paddlespeed = PADDLE_BALL_SLOWEST;
+}
+//---------------------------------------------------------------------------
+
+
+void __fastcall TfrmMain::Help2Click(TObject *Sender)
+{
+	//Calls the About Menu
+	frmAbout->Show();
+}
+//---------------------------------------------------------------------------
+
+
+void __fastcall TfrmMain::HallOfFame1Click(TObject *Sender)
+{
+	//Calls the Hall Of Fame Menu
+	frmHallOfFame->ShowModal();
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TfrmMain::PauseGame1Click(TObject *Sender)
+{
+
+ //Setting up where the pause window will be located on the screen
+ frmGamePause->Top = (frmMain->Top + 170);
+ frmGamePause->Left = (frmMain->Left);
+
+ //Opens the pause window in modal mode which means until the user presses OK, no
+ //other action will occur
+ frmGamePause->Left = frmMain->Left;frmGamePause->ShowModal();
+}
+//---------------------------------------------------------------------------
+void __fastcall TfrmMain::mnucmdSoundClick(TObject *Sender)
+{
+  //Turn the music On/Off
+	if(mnucmdSound->Checked == true){
+		 mnucmdSound->Checked = false;
+		 soundEnabled = false;
+	}
+	else if(mnucmdSound->Checked == false){
+		 mnucmdSound->Checked = true;
+		 soundEnabled = true;
+	}
+}
+//---------------------------------------------------------------------------
+

@@ -1,0 +1,61 @@
+//---------------------------------------------------------------------------
+
+#ifndef HallOfFameInterfaceH
+#define HallOfFameInterfaceH
+//---------------------------------------------------------------------------
+#include <Classes.hpp>
+#include <Controls.hpp>
+#include <StdCtrls.hpp>
+#include <Forms.hpp>
+#include <Buttons.hpp>
+#include <ExtCtrls.hpp>
+
+//---------------------------------------------------------------------------
+class TfrmHallOfFame : public TForm
+{
+__published:	// IDE-managed Components
+	TSpeedButton *SpeedButton1;
+	TLabel *Label1;
+	TShape *Shape1;
+	TLabel *Label2;
+	TLabel *Label3;
+	TShape *Shape2;
+	TShape *Shape3;
+	TShape *Shape4;
+	TShape *Shape5;
+	TShape *Shape6;
+	TShape *Shape7;
+	TShape *Shape8;
+	TShape *Shape9;
+	TShape *Shape10;
+	TShape *Shape11;
+	TShape *Shape12;
+	TLabel *List1;
+	TLabel *List11;
+	TLabel *List3;
+	TLabel *List13;
+	TLabel *List4;
+	TLabel *List14;
+	TLabel *List5;
+	TLabel *List15;
+	TLabel *List6;
+	TLabel *List16;
+	TLabel *List7;
+	TLabel *List17;
+	TLabel *List8;
+	TLabel *List18;
+	TLabel *List9;
+	TLabel *List19;
+	TLabel *List20;
+	TLabel *List10;
+	TLabel *List2;
+	TLabel *List12;
+	void __fastcall SpeedButton1Click(TObject *Sender);
+private:	// User declarations
+public:		friend class TfrmMain;
+	__fastcall TfrmHallOfFame(TComponent* Owner);
+};
+//---------------------------------------------------------------------------
+extern PACKAGE TfrmHallOfFame *frmHallOfFame;
+//---------------------------------------------------------------------------
+#endif

@@ -1,0 +1,76 @@
+-[LiveUpdate Results]-
+_________________________________________________________
+
+<html><body><font face="Courier New" color="Black" size="+.5"><pre><b>Submitter Name:</b> Armond Sarkisian
+<b>Submitter Location:</b> Santa Monica
+<b>Responsible Program Manager:</b> Abid Oonwala
+<b>Product Manager:</b> David Loomstein
+<b>Responsible Dev Manager:</b> Javier Santoyo
+<b>Responsible QA Manager:</b> Amyn Sachedina
+<b>Product Name:</b> AntiVirus Definition ( Liveupdate )
+<b>Product version:</b> 20050318.008
+<b>Language:</b> ALL
+<b>TRZ File name:</b> 031805j.trz
+<b>TRZ CRC:</b> N/A
+<b>Build Number:</b> 031805a
+<b>Navce Version:</b> 70318h
+<b>Localized package:</b> No
+<b>Detailed purpose of release:</b> Weekly LiveUpdate ( LU ) Release
+<b>Other information:</b> N/A
+<b>DIS sequence #:</b> 42265
+
+
+-[LiveUpdate2 Results]-
+_________________________________________________________
+
+<html><body><font face="Courier New" color="Black" size="+.5"><pre><b>Submitter Name:</b> Armond Sarkisian
+<b>Submitter Location:</b> Santa Monica
+<b>Responsible Program Manager:</b> Abid Oonwala
+<b>Product Manager:</b> David Loomstein
+<b>Responsible Dev Manager:</b> Javier Santoyo
+<b>Responsible QA Manager:</b> Amyn Sachedina
+<b>Product Name:</b> AntiVirus Definition ( Liveupdate )
+<b>Product version:</b> 20050318.008
+<b>Language:</b> ALL
+<b>TRZ File name:</b> 031805j.trz
+<b>TRZ CRC:</b> N/A
+<b>Build Number:</b> 031805a
+<b>Navce Version:</b> 70318h
+<b>Localized package:</b> No
+<b>Detailed purpose of release:</b> Daily LiveUpdate ( LU2 ) Release
+<b>Other information:</b> N/A
+<b>DIS sequence #:</b></pre></font> 42265
+
+
+-[Intelligent Updater Results]-
+_________________________________________________________
+
+<html><body><font face="Courier New" color="Black" size="+.5"><pre><b>Submitter Name:</b> Armond Sarkisian
+<b>Submitter Location:</b> Santa Monica
+<b>Responsible Program Manager:</b> Abid Oonwala
+<b>Product Manager:</b> David Loomstein
+<b>Responsible Dev Manager:</b> Javier Santoyo
+<b>Responsible QA Manager:</b> Amyn Sachedina
+<b>Product Name:</b> AntiVirus Definition Intelligent Updaters
+<b>Product version:</b> 20050318.008
+<b>Language:</b> ALL
+<b>TRX File name:</b> 031805.trx
+<b>TRZ CRC:</b> N/A
+<b>Build Number:</b> 031805a
+<b>Navce Version:</b> 70318h
+<b>Localized package:</b> No
+<b>Detailed purpose of release:</b> Daily Intelligent ( IU ) Updater Release
+<b>Other information:</b> None
+<b>DIS sequence #:</b> 42265
+
+<b><font color=#ff0000>NEW DETECTIONS:</font></b>
+
+<b>Virus Name                Infection Type           Date added</b>
+----------                --------------           ----------</pre></font>
+W32.Kelvir.I              File infector            03/18/05
+
+----------                --------------           ----------</pre></font>
+W32.Kelvir.I              File infector            03/18/05
+
+
+

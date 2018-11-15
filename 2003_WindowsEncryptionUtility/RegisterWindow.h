@@ -1,0 +1,33 @@
+//---------------------------------------------------------------------------
+
+#ifndef RegisterWindowH
+#define RegisterWindowH
+//---------------------------------------------------------------------------
+#include <Classes.hpp>
+#include <Controls.hpp>
+#include <StdCtrls.hpp>
+#include <Forms.hpp>
+#include <Mask.hpp>
+#include <Buttons.hpp>
+#include <ExtCtrls.hpp>
+//---------------------------------------------------------------------------
+class TfrmRegistration : public TForm
+{
+__published:	// IDE-managed Components
+	TGroupBox *Registration;
+	TLabel *Label1;
+	TBitBtn *BitBtn1;
+	TBitBtn *BitBtn2;
+	TBitBtn *BitBtn3;
+	TTimer *tmrStart;
+	TEdit *Edit1;
+	void __fastcall BitBtn1Click(TObject *Sender);
+	void __fastcall BitBtn3Click(TObject *Sender);
+private:	// User declarations
+public:		friend class TfrmMain;
+	__fastcall TfrmRegistration(TComponent* Owner);
+};
+//---------------------------------------------------------------------------
+extern PACKAGE TfrmRegistration *frmRegistration;
+//---------------------------------------------------------------------------
+#endif

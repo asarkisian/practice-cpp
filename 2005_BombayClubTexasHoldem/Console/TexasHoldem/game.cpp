@@ -1,0 +1,131 @@
+///////////////////////////////////////
+// game.cpp
+
+///////////////////////////////////////
+#include "game.h"
+#include "poker.h"
+///////////////////////////////////////
+
+///////////////////////////////////////
+using std::cin;
+using std::cout;
+using std::domain_error;
+using std::endl;
+///////////////////////////////////////
+
+///////////////////////////////////////
+Game::Game( name_t pname, currency_t pmon )
+:my_playersName( pname ),
+ my_playersMoney( pmon ),
+ my_wagerAmount( 0 )
+{
+}
+///////////////////////////////////////
+
+///////////////////////////////////////
+Game::~Game( )
+{
+}
+///////////////////////////////////////
+
+///////////////////////////////////////
+void Game::playGame( )
+{
+	theDeck.shuffleDeck( );
+
+	dealCards( DEAL );
+	dealCards( FLOP );
+	dealCards( TURN );
+	dealCards( RIVER );
+
+	checkPattern( PLAYER );
+	checkPattern( DEALER );
+
+	int status = ( checkWinnings( ) );
+	adjustWages( status );
+}
+///////////////////////////////////////
+
+///////////////////////////////////////
+void Game::makeWager( )
+{
+	currency_t bet = ( 0 );
+
+	cout << ENTER_WAGE_AMT;
+	cin >> bet;
+
+	// so the player does place a wager more than his money's worth
+	while( bet > playersMoney( ) )
+	{
+		cout << NOT_ENOUGH_MNY << bet << '!' << endl;
+
+		cout << ENTER_WAGE_AMT;
+		cin >> bet;
+	}
+
+	my_wagerAmount += ( bet );
+	my_playersMoney -= ( bet );
+}
+///////////////////////////////////////
+
+///////////////////////////////////////
+void Game::adjustWages( int status )
+{
+	if( status == 1 ) { my_playersMoney += ( my_wagerAmount * 2 ); }
+	else if( status == -1 ){ my_playersMoney += ( my_wagerAmount ); }
+	
+	return;
+}
+///////////////////////////////////////
+
+///////////////////////////////////////
+void Game::resetWagerAmount( )
+{
+	my_wagerAmount = ( 0 );
+}
+///////////////////////////////////////
+
+///////////////////////////////////////
+void Game::displayTitle( ) const
+{
+	cout << TITLE 
+		 << TITLE_LINE << endl;
+}
+///////////////////////////////////////
+
+///////////////////////////////////////
+void Game::clearScreen( ) const
+{
+	system( CLEAR_SCREEN );
+
+	this->displayTitle( );
+}
+///////////////////////////////////////
+
+///////////////////////////////////////
+void Game::pauseScreen( ) const
+{
+	system( PAUSE_SCREEN );
+}
+///////////////////////////////////////
+
+///////////////////////////////////////
+name_t Game::playersName( ) const
+{
+	return( my_playersName );
+}
+///////////////////////////////////////
+
+///////////////////////////////////////
+currency_t Game::playersMoney( ) const
+{
+	return( my_playersMoney );
+}
+///////////////////////////////////////
+
+///////////////////////////////////////
+currency_t Game::wagerAmount( ) const
+{
+	return( my_wagerAmount );
+}
+///////////////////////////////////////

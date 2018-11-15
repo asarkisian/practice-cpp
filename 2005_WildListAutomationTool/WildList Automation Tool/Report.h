@@ -1,0 +1,55 @@
+////////////////////////////////////////////
+#ifndef __REPORT_H__
+#define __REPORT_H__
+////////////////////////////////////////////
+
+////////////////////////////////////////////
+#include "typedefs.h"
+////////////////////////////////////////////
+
+////////////////////////////////////////////
+#include <string>
+#include <vector>
+////////////////////////////////////////////
+
+////////////////////////////////////////////
+class Report
+{
+public:
+
+	// constructors/destructors
+	explicit Report( );
+	~Report( );
+
+	// modifiers
+	bool retrieveThreatFreq( );
+	void sortThreats( );
+	bool matchNewFile( );
+
+	// accessors
+	void generateReport( ) const;
+
+	// public data
+	std::string my_newFile;
+	std::string my_freqFile;
+
+private:
+
+	// private data
+	std::vector<std::string*>* my_threatName;
+	std::vector<std::string*>* my_freq;
+
+	std::vector<std::string*>* my_wildList;
+	std::vector<std::string*>* my_wildListFreq;
+
+	// used for bubble sorting
+	uint_t outer;
+	uint_t inner;
+	std::string temp;
+
+};
+////////////////////////////////////////////
+
+////////////////////////////////////////////
+#endif
+////////////////////////////////////////////

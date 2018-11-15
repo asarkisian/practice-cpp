@@ -1,0 +1,69 @@
+//---------------------------------------------------------------------------
+
+#ifndef MainH
+#define MainH
+//---------------------------------------------------------------------------
+#include <Classes.hpp>
+#include <Controls.hpp>
+#include <StdCtrls.hpp>
+#include <Forms.hpp>
+#include <Menus.hpp>
+#include <ExtCtrls.hpp>
+#include <ComCtrls.hpp>
+#include <Buttons.hpp>
+#include <Graphics.hpp>
+#include "trayicon.h"
+//---------------------------------------------------------------------------
+class TfrmMain : public TForm
+{
+__published:	// IDE-managed Components
+	TMainMenu *MainMenu1;
+	TMenuItem *File1;
+	TMenuItem *Tools1;
+	TMenuItem *About1;
+	TMenuItem *Exit1;
+	TMenuItem *Encrypt1;
+	TMenuItem *Decrypt1;
+	TLabel *Label1;
+	TMemo *activeText;
+	TMemo *passiveText;
+	TBevel *Bevel1;
+	TBevel *Bevel2;
+	TStatusBar *StatusBar1;
+	TBitBtn *BitBtn1;
+	TBitBtn *BitBtn2;
+	TBitBtn *BitBtn3;
+	TBitBtn *BitBtn4;
+	TTimer *Timer1;
+	TTimer *miscTimer1;
+	TImage *imgUnlocked;
+	TImage *imgLocked;
+	void __fastcall FormCreate(TObject *Sender);
+	void __fastcall Timer1Timer(TObject *Sender);
+	void __fastcall BitBtn4Click(TObject *Sender);
+	void __fastcall BitBtn1Click(TObject *Sender);
+	void __fastcall BitBtn2Click(TObject *Sender);
+	void __fastcall BitBtn3Click(TObject *Sender);
+	void __fastcall Label1MouseMove(TObject *Sender, TShiftState Shift, int X,
+          int Y);
+	void __fastcall FormMouseMove(TObject *Sender, TShiftState Shift, int X,
+          int Y);
+	void __fastcall activeTextMouseMove(TObject *Sender, TShiftState Shift,
+          int X, int Y);
+	void __fastcall passiveTextMouseMove(TObject *Sender, TShiftState Shift,
+          int X, int Y);
+	void __fastcall Label1Click(TObject *Sender);
+	void __fastcall miscTimer1Timer(TObject *Sender);
+	void __fastcall Exit1Click(TObject *Sender);
+	void __fastcall Encrypt1Click(TObject *Sender);
+	void __fastcall Decrypt1Click(TObject *Sender);
+	void __fastcall FormClose(TObject *Sender, TCloseAction &Action);
+        void __fastcall About1Click(TObject *Sender);
+private:	// User declarations
+public:		// User declarations
+	__fastcall TfrmMain(TComponent* Owner);
+};
+//---------------------------------------------------------------------------
+extern PACKAGE TfrmMain *frmMain;
+//---------------------------------------------------------------------------
+#endif

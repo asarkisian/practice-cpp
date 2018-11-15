@@ -1,0 +1,18 @@
+------ Build started: Project: emailGen, Configuration: Release Win32 ------
+
+Compiling...
+main.cpp
+emailGen.cpp
+doMain.cpp
+Generating Code...
+Linking...
+
+Build log was saved at "file://c:\Documents and Settings\ar\Desktop\Dinesh Project\emailGen\Release\BuildLog.htm"
+emailGen - 0 error(s), 0 warning(s)
+
+
+---------------------- Done ----------------------
+
+    Build: 1 succeeded, 0 failed, 0 skipped
+
+

@@ -1,0 +1,51 @@
+Symantec CrossCheck Data Report for Tuesday, January 18, 2005
+Testing Time: [15:53:40]
+================================================================
+
+-_-_-_-_-_-_-_-_-_-_-_-( Data Report )-_-_-_-_-_-_-_-_-_-_-_-_
+
+***File Report***
+Total Critical Files: 63
+Missing File: 22/63
+Corrupted File: 4/63
+
+***Registry Report***
+Total Critical Registries: 1
+Missing Registries: 0/1
+Corrupted Registries: 0/1
+
+-_-_-_-_-_-_-_-_-_-_-_( Missing Files )_-_-_-_-_-_-_-_-_-_-_-_-
+Missing File: c:\command.com
+Missing File: c:\windows\command.com
+Missing File: c:\windows\command.pif
+Missing File: c:\windows\dosprmpt.pif
+Missing File: c:\windows\dosstart.bat
+Missing File: c:\windows\rundll.exe
+Missing File: c:\windows\rundll32.exe
+Missing File: c:\windows\scandskw.exe
+Missing File: c:\windows\scanregw.exe
+Missing File: c:\windows\system.dat
+Missing File: c:\windows\taskmon.exe
+Missing File: c:\windows\user.dat
+Missing File: c:\windows\system32\commctrl.dll
+Missing File: c:\windows\system32\ctl3d.dll
+Missing File: c:\windows\system32\macxw4.drv
+Missing File: c:\windows\system32\macxw4.vxd
+Missing File: c:\windows\system32\mswinsck.ocx
+Missing File: c:\windows\system32\ole2conv.dll
+Missing File: c:\windows\system32\user32.exe
+Missing File: c:\windows\system32\wsock.vxd
+Missing File: c:\windows\system32\wsock2.vxd
+Missing File: c:\windows\system32\wsock32.dlb
+
+-_-_-_-_-_-_-_-_-( Possibly Corrupted Files )-_-_-_-_-_-_-_-_-_
+Corrupted File: c:\autoexec.bat
+Corrupted File: c:\config.sys
+Corrupted File: c:\io.sys
+Corrupted File: c:\msdos.sys
+
+-_-_-_-_-_-_-_-_-_-_( Missing Registries )_-_-_-_-_-_-_-_-_-_-_
+<No missing registries>
+
+-_-_-_-_-_-_-_-( Possibly Corrupted Registries )-_-_-_-_-_-_-_-
+<No corrupted registries>

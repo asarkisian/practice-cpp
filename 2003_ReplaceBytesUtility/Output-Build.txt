@@ -1,0 +1,15 @@
+------ Build started: Project: ReplaceBytes, Configuration: Release Win32 ------
+
+Compiling...
+doMain.cpp
+Linking...
+
+Build log was saved at "file://c:\Documents and Settings\ar\Desktop\Dinesh Project\ReplaceBytes\Release\BuildLog.htm"
+ReplaceBytes - 0 error(s), 0 warning(s)
+
+
+---------------------- Done ----------------------
+
+    Build: 1 succeeded, 0 failed, 0 skipped
+
+

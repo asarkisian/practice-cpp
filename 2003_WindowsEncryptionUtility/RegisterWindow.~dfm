@@ -1,0 +1,78 @@
+object frmRegistration: TfrmRegistration
+  Left = 497
+  Top = 262
+  BorderIcons = []
+  BorderStyle = bsSingle
+  Caption = 'Cryption Utility Registration'
+  ClientHeight = 102
+  ClientWidth = 361
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'MS Sans Serif'
+  Font.Style = []
+  FormStyle = fsStayOnTop
+  OldCreateOrder = False
+  Position = poScreenCenter
+  PixelsPerInch = 96
+  TextHeight = 13
+  object Registration: TGroupBox
+    Left = 8
+    Top = 8
+    Width = 345
+    Height = 91
+    Caption = 'Please register before continuing'
+    TabOrder = 0
+    object Label1: TLabel
+      Left = 8
+      Top = 24
+      Width = 105
+      Height = 13
+      Caption = 'Registration Number:  '
+    end
+    object BitBtn1: TBitBtn
+      Left = 264
+      Top = 56
+      Width = 73
+      Height = 25
+      TabOrder = 0
+      OnClick = BitBtn1Click
+      Kind = bkCancel
+    end
+    object BitBtn2: TBitBtn
+      Left = 112
+      Top = 56
+      Width = 145
+      Height = 25
+      Caption = 'Continue &Unregistered'
+      TabOrder = 1
+      OnClick = BitBtn2Click
+      Kind = bkIgnore
+    end
+    object BitBtn3: TBitBtn
+      Left = 8
+      Top = 56
+      Width = 97
+      Height = 25
+      Caption = '&Register'
+      TabOrder = 2
+      OnClick = BitBtn3Click
+      Kind = bkOK
+    end
+    object Edit1: TEdit
+      Left = 111
+      Top = 21
+      Width = 225
+      Height = 21
+      MaxLength = 25
+      TabOrder = 3
+    end
+  end
+  object tmrStart: TTimer
+    Enabled = False
+    Interval = 1
+    Left = 160
+    Top = 144
+  end
+end

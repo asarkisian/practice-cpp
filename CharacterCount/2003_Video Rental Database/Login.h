@@ -1,0 +1,46 @@
+//---------------------------------------------------------------------------
+
+#ifndef LoginH
+#define LoginH
+//---------------------------------------------------------------------------
+#include <Classes.hpp>
+#include <Controls.hpp>
+#include <StdCtrls.hpp>
+#include <Forms.hpp>
+#include <Buttons.hpp>
+#include <ExtCtrls.hpp>
+#include <Graphics.hpp>
+#include <DB.hpp>
+#include <ADODB.hpp>
+#include <DBTables.hpp>
+//---------------------------------------------------------------------------
+class TfrmLogin : public TForm
+{
+__published:	// IDE-managed Components
+        TPanel *Panel1;
+        TBitBtn *cmdLogin;
+        TBitBtn *cmdCancel;
+        TBitBtn *cmdAdmin;
+        TImage *imgYellow;
+        TGroupBox *GroupBox1;
+        TLabel *lblAccount;
+        TLabel *lblPassword;
+        TEdit *txtAccount;
+        TEdit *txtPassword;
+        TLabel *lblAbout;
+        TLabel *lblAdminCode;
+        TEdit *txtAdminCode;
+        TBitBtn *cmdClear;
+        void __fastcall cmdLoginClick(TObject *Sender);
+        void __fastcall cmdClearClick(TObject *Sender);
+        void __fastcall tmrLoginTimer(TObject *Sender);
+        void __fastcall cmdCancelClick(TObject *Sender);
+        void __fastcall cmdAdminClick(TObject *Sender);
+private:	// User declarations
+public:		// User declarations
+        __fastcall TfrmLogin(TComponent* Owner);
+};
+//---------------------------------------------------------------------------
+extern PACKAGE TfrmLogin *frmLogin;
+//---------------------------------------------------------------------------
+#endif

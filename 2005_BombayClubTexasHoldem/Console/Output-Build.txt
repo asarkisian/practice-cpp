@@ -1,0 +1,15 @@
+1>------ Build started: Project: TexasHoldem, Configuration: Debug Win32 ------
+1>Compiling...
+1>game.cpp
+1>c:\documents and settings\armond\desktop\the bombay club\source\console\texasholdem\game.cpp(47) : error C2065: 'playersDepth' : undeclared identifier
+1>c:\documents and settings\armond\desktop\the bombay club\source\console\texasholdem\game.cpp(48) : error C2065: 'dealersDepth' : undeclared identifier
+1>patterns.cpp
+1>Generating Code...
+1>Compiling...
+1>poker.cpp
+1>Generating Code...
+1>Skipping... (no relevant changes detected)
+1>doMain.cpp
+1>Build log was saved at "file://c:\Documents and Settings\Armond\Desktop\The Bombay Club\Source\Console\TexasHoldem\Debug\BuildLog.htm"
+1>TexasHoldem - 2 error(s), 0 warning(s)
+========== Build: 0 succeeded, 1 failed, 0 up-to-date, 0 skipped ==========

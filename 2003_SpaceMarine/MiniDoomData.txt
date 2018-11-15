@@ -1,0 +1,37 @@
+// SpaceMarine dataFile
+// Configuration file
+
+[Demo]
+nodemo
+
+[SpaceMarine]
+SpaceMarine 20 10 North 100 0
+
+[Monster]
+Zombie     35 17 South 30
+
+ShotgunGuy 20  2 North 50
+
+PinkDemon  13 10 East  70
+
+[Bonus]
+ArmorBonus  15 15
+ArmorBonus   7 10
+ArmorBonus  12  2
+ArmorBonus  25  5
+ArmorBonus  35 16
+
+HealthBonus  5  5
+HealthBonus 22 17
+HealthBonus 30  3
+HealthBonus 34 10
+HealthBonus  3 16
+
+GreenArmor  25 10
+
+BlueArmor   35  6
+
+[DemoData]
+wwwwwwwccwdwwwwwwwwwwwwwdwwwwwwwwcwwwww
+wwdwwwwccwwwwwzzzwwwwwwwwwwwwwwwwwwwwdw
+wwccwwwwwccccccccwwwwwwawwwwwwwwwwwwq

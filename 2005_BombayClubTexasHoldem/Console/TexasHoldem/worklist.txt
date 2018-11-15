@@ -1,0 +1,2 @@
+- Add the ability to let the player fold
+- Verify two pair pattern

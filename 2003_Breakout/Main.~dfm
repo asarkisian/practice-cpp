@@ -1,0 +1,365 @@
+object frmMain: TfrmMain
+  Left = 224
+  Top = 176
+  BorderIcons = [biSystemMenu, biMinimize]
+  BorderStyle = bsSingle
+  Caption = 'Marina'#39's Crazy Adventure'
+  ClientHeight = 334
+  ClientWidth = 569
+  Color = clWhite
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'MS Sans Serif'
+  Font.Style = []
+  Icon.Data = {
+    0000010001002020040000000000E80200001600000028000000200000004000
+    0000010004000000000000020000000000000000000000000000000000000000
+    0000000080000080000000808000800000008000800080800000C0C0C0008080
+    80000000FF0000FF000000FFFF00FF000000FF00FF00FFFF0000FFFFFF000000
+    0000000000000000000000000000000000000000000000000000000000000000
+    0000000000000000111111000000000000000000000000119999991000000000
+    0000000000001199999999910000000000000000001199900099999900000000
+    0111111111999100000999991000000019999999999000000009999990000001
+    9999999999999999990099999000000999999999999999999990999990000009
+    9999999999999999999901199000000999999999991000000999009990000000
+    9999910000077770099009990000000019900077077777788099999900000000
+    1100700707700007801999990000000000070070770000007809999000000000
+    0000000000700000780999900000000000000700007000007809999000000000
+    0000000000700000780999900000000000070070700000007809999000000000
+    0007007070000000780999900000000000070070700000078809999000000000
+    0007007070000007801999990000000000070007070000078099999900000000
+    0000700707000078019999990000000000007000707777780999999900000000
+    0000007700088880999999100000000000000000091000099999000000000000
+    0000001991019999990000000000000000000000000999991000000000000000
+    000000000000000000000000000000000000000000000000000000000000FFFF
+    FFFFFFFFF03FFFFFC01FFFFF000FFFFC0007F8000007F0000003E0000003C000
+    0003C0000003C0000003C0000003E0000007E0000007F061E007F8C3F00FFC61
+    F00FFC21F00FFC61F00FFCC7F00FFCC7F00FFCC7E00FFCC7E007FCE3E007FE63
+    C007FE700000FF00000FFF000017FF8000DBFFC003EDFFFE07F7FFFFFFFF}
+  Menu = MainMenu1
+  OldCreateOrder = False
+  Position = poScreenCenter
+  OnClose = FormClose
+  OnCreate = FormCreate
+  OnKeyDown = FormKeyDown
+  PixelsPerInch = 96
+  TextHeight = 13
+  object myPaddle: TShape
+    Left = 229
+    Top = 288
+    Width = 2
+    Height = 12
+    Brush.Color = clBlue
+    Pen.Color = clWhite
+    Pen.Style = psClear
+  end
+  object myPaddle2: TShape
+    Left = 349
+    Top = 288
+    Width = 2
+    Height = 12
+    Brush.Color = clBlue
+    Pen.Color = clWhite
+    Pen.Style = psClear
+  end
+  object blackFloor: TShape
+    Left = 0
+    Top = 312
+    Width = 569
+    Height = 25
+    Brush.Color = clBlack
+  end
+  object myPaddle3: TShape
+    Left = 289
+    Top = 288
+    Width = 2
+    Height = 12
+    Brush.Color = clBlue
+    Pen.Color = clBlue
+    Pen.Style = psClear
+  end
+  object myPaddle4: TShape
+    Left = 230
+    Top = 288
+    Width = 60
+    Height = 12
+    Brush.Color = clBlue
+    Pen.Color = clBlue
+    Pen.Style = psClear
+  end
+  object myPaddle5: TShape
+    Left = 290
+    Top = 288
+    Width = 60
+    Height = 12
+    Brush.Color = clBlue
+    Pen.Color = clBlue
+    Pen.Style = psClear
+  end
+  object myBall: TShape
+    Left = 281
+    Top = 245
+    Width = 20
+    Height = 19
+    Pen.Color = clBlue
+    Shape = stCircle
+  end
+  object Label1: TLabel
+    Left = 4
+    Top = 312
+    Width = 91
+    Height = 23
+    Caption = 'MISSES:'
+    Color = clBlack
+    Font.Charset = ANSI_CHARSET
+    Font.Color = clWhite
+    Font.Height = -21
+    Font.Name = 'Courier New'
+    Font.Style = [fsBold]
+    ParentColor = False
+    ParentFont = False
+  end
+  object numberOfMisses: TLabel
+    Left = 97
+    Top = 313
+    Width = 11
+    Height = 22
+    Color = clBlack
+    Font.Charset = ANSI_CHARSET
+    Font.Color = clBlue
+    Font.Height = -19
+    Font.Name = 'Courier New'
+    Font.Style = [fsBold]
+    ParentColor = False
+    ParentFont = False
+  end
+  object Label2: TLabel
+    Left = 141
+    Top = 312
+    Width = 78
+    Height = 23
+    Caption = 'LEVEL:'
+    Color = clBlack
+    Font.Charset = ANSI_CHARSET
+    Font.Color = clWhite
+    Font.Height = -21
+    Font.Name = 'Courier New'
+    Font.Style = [fsBold]
+    ParentColor = False
+    ParentFont = False
+  end
+  object numberOfLevel: TLabel
+    Left = 221
+    Top = 313
+    Width = 11
+    Height = 22
+    Color = clBlack
+    Font.Charset = ANSI_CHARSET
+    Font.Color = clBlue
+    Font.Height = -19
+    Font.Name = 'Courier New'
+    Font.Style = [fsBold]
+    ParentColor = False
+    ParentFont = False
+  end
+  object Label3: TLabel
+    Left = 413
+    Top = 313
+    Width = 78
+    Height = 23
+    Caption = 'SCORE:'
+    Color = clBlack
+    Font.Charset = ANSI_CHARSET
+    Font.Color = clWhite
+    Font.Height = -21
+    Font.Name = 'Courier New'
+    Font.Style = [fsBold]
+    ParentColor = False
+    ParentFont = False
+  end
+  object numberOfScore: TLabel
+    Left = 493
+    Top = 313
+    Width = 11
+    Height = 22
+    Color = clBlack
+    Font.Charset = ANSI_CHARSET
+    Font.Color = clBlue
+    Font.Height = -19
+    Font.Name = 'Courier New'
+    Font.Style = [fsBold]
+    ParentColor = False
+    ParentFont = False
+  end
+  object Label4: TLabel
+    Left = 264
+    Top = 312
+    Width = 104
+    Height = 23
+    Caption = 'CREDITS:'
+    Color = clBlack
+    Font.Charset = ANSI_CHARSET
+    Font.Color = clWhite
+    Font.Height = -21
+    Font.Name = 'Courier New'
+    Font.Style = [fsBold]
+    ParentColor = False
+    ParentFont = False
+  end
+  object numberOfCredits: TLabel
+    Left = 370
+    Top = 313
+    Width = 11
+    Height = 22
+    Color = clBlack
+    Font.Charset = ANSI_CHARSET
+    Font.Color = clBlue
+    Font.Height = -19
+    Font.Name = 'Courier New'
+    Font.Style = [fsBold]
+    ParentColor = False
+    ParentFont = False
+  end
+  object bonusLevel1: TLabel
+    Left = 1
+    Top = -2
+    Width = 73
+    Height = 14
+    Caption = 'BONUS LEVEL'
+    Font.Charset = ANSI_CHARSET
+    Font.Color = clWhite
+    Font.Height = -11
+    Font.Name = 'Arial'
+    Font.Style = [fsBold]
+    ParentFont = False
+    Transparent = True
+    Visible = False
+  end
+  object bonusLevel2: TLabel
+    Left = 500
+    Top = -2
+    Width = 73
+    Height = 14
+    Caption = 'BONUS LEVEL'
+    Font.Charset = ANSI_CHARSET
+    Font.Color = clWhite
+    Font.Height = -11
+    Font.Name = 'Arial'
+    Font.Style = [fsBold]
+    ParentFont = False
+    Transparent = True
+    Visible = False
+  end
+  object MainMenu1: TMainMenu
+    Left = 65528
+    Top = 65528
+    object File1: TMenuItem
+      Caption = 'File'
+      object StartGame1: TMenuItem
+        AutoHotkeys = maAutomatic
+        AutoLineReduction = maAutomatic
+        Caption = '&Start Game       F1'
+        RadioItem = True
+        OnClick = StartGame1Click
+      end
+      object EndGame1: TMenuItem
+        Caption = '&End Game         ESC'
+        RadioItem = True
+        OnClick = EndGame1Click
+      end
+      object N1: TMenuItem
+        Caption = '-'
+      end
+      object ExitAltF41: TMenuItem
+        Caption = '&Exit                   Alt+F4'
+        OnClick = ExitAltF41Click
+      end
+    end
+    object Opotions1: TMenuItem
+      Caption = 'Options'
+      object Difficulty1: TMenuItem
+        Caption = 'Difficulty'
+        object mnuBallSlowest: TMenuItem
+          Caption = 'Beginner'
+          RadioItem = True
+          OnClick = mnuBallSlowestClick
+        end
+        object mnuBallSlow: TMenuItem
+          Caption = 'Novice'
+          RadioItem = True
+          OnClick = mnuBallSlowClick
+        end
+        object mnuBallMod: TMenuItem
+          Caption = 'Intermediate'
+          Checked = True
+          RadioItem = True
+          OnClick = mnuBallModClick
+        end
+        object mnuBallFast: TMenuItem
+          Caption = 'Expert'
+          RadioItem = True
+          OnClick = mnuBallFastClick
+        end
+        object mnuBallFastest: TMenuItem
+          Caption = 'Master'
+          RadioItem = True
+          OnClick = mnuBallFastestClick
+        end
+      end
+      object PaddleSpeed1: TMenuItem
+        Caption = 'Paddle Speed'
+        GroupIndex = 1
+        object mnuPaddleSlowest: TMenuItem
+          Caption = 'Slowest'
+          RadioItem = True
+          OnClick = mnuPaddleSlowestClick
+        end
+        object mnuPaddleSlow: TMenuItem
+          Caption = 'Slow'
+          RadioItem = True
+          OnClick = mnuPaddleSlowClick
+        end
+        object mnuPaddleMod: TMenuItem
+          Caption = 'Moderate'
+          Checked = True
+          RadioItem = True
+          OnClick = mnuPaddleModClick
+        end
+        object mnuPaddleFast: TMenuItem
+          Caption = 'Fast'
+          RadioItem = True
+          OnClick = mnuPaddleFastClick
+        end
+        object mnuPaddleFastest: TMenuItem
+          Caption = 'Fastest'
+          RadioItem = True
+          OnClick = mnuPaddleFastestClick
+        end
+      end
+      object N2: TMenuItem
+        Caption = '-'
+        GroupIndex = 1
+      end
+      object PauseGame1: TMenuItem
+        Caption = 'Pause Game       F5'
+        GroupIndex = 1
+        OnClick = PauseGame1Click
+      end
+      object mnucmdSound: TMenuItem
+        Caption = 'Sound On           F4'
+        Checked = True
+        GroupIndex = 1
+        OnClick = mnucmdSoundClick
+      end
+    end
+    object HallOfFame1: TMenuItem
+      Caption = 'Top Scores'
+      OnClick = HallOfFame1Click
+    end
+    object Help2: TMenuItem
+      Caption = '&About'
+      OnClick = Help2Click
+    end
+  end
+end

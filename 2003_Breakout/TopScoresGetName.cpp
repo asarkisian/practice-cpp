@@ -1,0 +1,26 @@
+//---------------------------------------------------------------------------
+
+#include <vcl.h>
+#pragma hdrstop
+
+#include "TopScoresGetName.h"
+#include "HallOfFame.h"
+//---------------------------------------------------------------------------
+#pragma package(smart_init)
+#pragma resource "*.dfm"
+TinputTopScoresPlayersName *inputTopScoresPlayersName;
+//---------------------------------------------------------------------------
+__fastcall TinputTopScoresPlayersName::TinputTopScoresPlayersName(TComponent* Owner)
+	: TForm(Owner)
+{
+}
+//---------------------------------------------------------------------------
+void __fastcall TinputTopScoresPlayersName::Button1Click(TObject *Sender)
+{
+  //Duplicates the copy of the players name 
+	theRecords.tempName = inputTopScoresPlayersName->getName->Text;
+
+	//Close the window
+	inputTopScoresPlayersName->Close();
+}
+//---------------------------------------------------------------------------

@@ -1,0 +1,129 @@
+#include "Main.h"
+#include "GameConstants.h"
+
+extern TfrmMain *frmMain;	//From main.cpp
+
+void __fastcall TfrmMain::initializeValues(){
+
+	//call randomMenuColors to randomely generate a color for the menubar
+	frmMain->randomMenuColors();
+
+	//Determining which image to put for which level
+	myBackground->SendToBack();
+	myBackground->Height = (frmMain->Height - blackFloor->Height);
+	myBackground->Width = frmMain->Width;
+
+	levelThemes();		//Determines which theme is appropriate for the current level
+
+ //Checks to see whether or not the player lost or won
+ if(((playerNewGame == false && playerWinGame == true &&	playerLoseGame == false
+ && playerEndGame == false)) || (playerRestartGame == true)	){
+
+ //Reset all the bricks to their original location
+ for (short int i=0, x=10, y=20; i < 25; i++, x+=110){
+
+	 //Dynamically create an object shape3 during runtime.
+	 Shape3[i]->Picture->LoadFromFile(BRICK_PICTURE);
+	 Shape3[i]->Height = BRICK_HEIGHT;
+	 Shape3[i]->Width = BRICK_WIDTH;
+	 Shape3[i]->Top = y;
+	 Shape3[i]->Left = x;
+	 Shape3[i]->Visible = false;
+
+	 if(i == 4 || i == 9 || i == 14 || i == 19){
+
+			//Resets and returns the bricks back to the beginning which is LEFT = 10
+			x = -100;
+
+			//Resets and returns the bricks below the bricks that were already generated
+			y += 17;
+	 }
+ }
+}
+
+	//Initialize the ball to original spot and size
+	 myBall->Visible = true;
+	 myBall->Height = MYBALL_HEIGHT;
+	 myBall->Width = MYBALL_WIDTH;
+	 myBall->Top = MYBALL_TOP;
+	 myBall->Left = MYBALL_LEFT;
+
+	 themeBallColor();//Initializes the ball color depending on the stage (theme)
+
+	 //Initializing the bottom black floor
+	 blackFloor->Brush->Color = BLACKFLOOR_COLOR;
+	 blackFloor->Height = BLACKFLOOR_HEIGHT;
+	 blackFloor->Width = BLACKFLOOR_WIDTH;
+	 blackFloor->Top = BLACKFLOOR_TOP;
+	 blackFloor->Left = BLACKFLOOR_LEFT;
+
+	 themePaddleColor(); //Initializes the paddle color depending on the stage (theme)
+
+	 //Initializing the left side paddle to original spot and size
+	 myPaddle->Height = LEFTPANEL_HEIGHT;
+	 myPaddle->Width = LEFTPANEL_WIDTH;
+	 myPaddle->Top = LEFTPANEL_TOP;
+	 myPaddle->Left = LEFTPANEL_LEFT;
+
+	 //Initiating the middle left side paddle to original spot and size
+	 myPaddle4->Height = MIDDLELEFTPANEL_HEIGHT;
+	 myPaddle4->Width = MIDDLELEFTPANEL_WIDTH;
+	 myPaddle4->Top = MIDDLELEFTPANEL_TOP;
+	 myPaddle4->Left = MIDDLELEFTPANEL_LEFT;
+
+	 //Initializing the middle side paddle to original spot and size
+	 myPaddle3->Height = MIDDLEPANEL_HEIGHT;
+	 myPaddle3->Width = MIDDLEPANEL_WIDTH;
+	 myPaddle3->Top = MIDDLEPANEL_TOP;
+	 myPaddle3->Left = MIDDLEPANEL_LEFT;
+
+	 //Initiating the middle right side paddle to original spot and size
+	 myPaddle5->Height = MIDDLERIGHTPANEL_HEIGHT;
+	 myPaddle5->Width = MIDDLERIGHTPANEL_WIDTH;
+	 myPaddle5->Top = MIDDLERIGHTPANEL_TOP;
+	 myPaddle5->Left = MIDDLERIGHTPANEL_LEFT;
+
+	 //Initializing the right side paddle to original spot and size
+	 myPaddle2->Height = RIGHTPANEL_HEIGHT;
+	 myPaddle2->Width = RIGHTPANEL_WIDTH;
+	 myPaddle2->Top = RIGHTPANEL_TOP;
+	 myPaddle2->Left = RIGHTPANEL_LEFT;
+
+	 //Control Keys to determine where the ball moves
+	 controlKey_up = BALL_UP;
+	 controlKey_down = BALL_DOWN;
+
+		 //Determining which way the ball will roll during startup  (LEFT OR RIGHT)
+		 {
+			randomize();
+			unsigned int* someNumber = new unsigned int(0);
+			*someNumber = (rand() % 2);
+			if(*someNumber){
+				controlKey_left = 1;
+				controlKey_right = 0;
+			}
+			else if(!*someNumber){
+				controlKey_right = 1;
+				controlKey_left = 0;
+			}
+			delete someNumber;
+		 }
+
+	 //Startup speed of the ball
+	 paddle_ballSpeedUp = BALL_SPEED_UP;
+	 paddle_ballSpeedDown = BALL_SPEED_DOWN;
+	 paddle_ballSpeedLeft = BALL_SPEED_LEFT;
+	 paddle_ballSpeedRight = BALL_SPEED_RIGHT;
+
+ //Checks to see whether or not the player lost or won
+ if(playerNewGame == true)
+		amountOfBricksHit=(NULL_VALUE);
+ else if(playerWinGame == true)
+		amountOfBricksHit=(NULL_VALUE);
+ else if(playerRestartGame == true)
+		amountOfBricksHit=(NULL_VALUE);
+ else if(playerEndGame == true)
+		amountOfBricksHit=(NULL_VALUE);
+ else if(playerEndGame == true)
+		amountOfBricksHit=(NULL_VALUE);
+} 
