@@ -1,2 +1,0 @@
-# cpp
-cpp practice code
